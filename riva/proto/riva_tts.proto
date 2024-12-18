@@ -56,9 +56,9 @@ message ZeroShotData {
   // between 1-40. Defaults to 20.
   int32 quality = 4;
   //
-  string textPrompt = 5;
+  string text_prompt = 5;
   // Transcript corresponding to audio_prompt.
-  string transcriptTarget = 6;
+  string transcript_target = 6;
 }
 
 message SynthesizeSpeechRequest {
