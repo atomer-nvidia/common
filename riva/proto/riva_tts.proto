@@ -89,6 +89,9 @@ message SynthesizeSpeechRequest {
   // grapheme and corresponding phoneme separated by double spaces.
   string custom_dictionary = 7;
 
+  // Speed of generated audio, ranges between 0.5-2.0
+  double speed = 8;
+
   // The ID to be associated with the request. If provided, this will be
   // returned in the corresponding response.
   RequestId id = 100;
