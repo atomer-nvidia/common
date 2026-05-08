@@ -59,9 +59,6 @@ message ZeroShotData {
   int32 quality = 4;
   // Transcript corresponding to audio_prompt.
   string transcript = 5;
-
-  // Exaggeration factor for generated voice.
-  float exaggeration_factor = 6;
 }
 
 message SynthesizeSpeechRequest {
@@ -91,6 +88,11 @@ message SynthesizeSpeechRequest {
   // A string containing comma-separated key-value pairs of
   // grapheme and corresponding phoneme separated by double spaces.
   string custom_dictionary = 7;
+
+  // Free-form key/value parameters for the synthesizer. Lets the server
+  // accept additional or model-specific options without proto changes.
+  // Currently recognized keys include "exaggeration_factor".
+  map<string, string> custom_configuration = 8;
 
   // The ID to be associated with the request. If provided, this will be
   // returned in the corresponding response.
