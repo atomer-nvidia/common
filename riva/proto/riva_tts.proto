@@ -18,8 +18,8 @@ service RivaSpeechSynthesis {
   rpc Synthesize(SynthesizeSpeechRequest) returns (SynthesizeSpeechResponse) {}
 
   // Used to request text-to-speech returned via stream as it becomes available.
-  // Submit a SynthesizeSpeechRequest with desired text and configuration,
-  // and receive stream of bytes in the requested format.
+  // Submit a stream of SynthesizeSpeechRequest messages with desired text and
+  // configuration, and receive a stream of bytes in the requested format.
   rpc SynthesizeOnline(stream SynthesizeSpeechRequest)
       returns (stream SynthesizeSpeechResponse) {}
 
@@ -89,6 +89,11 @@ message SynthesizeSpeechRequest {
   // grapheme and corresponding phoneme separated by double spaces.
   string custom_dictionary = 7;
 
+  // Free-form key/value parameters for the synthesizer. Lets the server
+  // accept additional or model-specific options without proto changes.
+  // Currently recognized keys include "exaggeration_factor".
+  map<string, string> custom_configuration = 8;
+
   // The ID to be associated with the request. If provided, this will be
   // returned in the corresponding response.
   RequestId id = 100;
@@ -112,7 +117,3 @@ message SynthesizeSpeechResponse {
   // The ID associated with the request
   RequestId id = 100;
 }
-
-/*
- *
- */
